@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <component-a></component-a>
+        <component-b></component-b>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('component-a', {
+            template: '<div><h1>{{globelComponentName}}</h1></div>',
+            data() {
+                return {
+                    globelComponentName: '这是全局组件'
+                }
+            },
+        });
+
+        const componentB = {
+            template: '<div>{{localComponentName}}</div>',
+            data() {
+                return {
+                    localComponentName: '这是局部组件'
+                }
+            },
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'component-b': componentB
+            }
+        })
+
+    </script>
+</body>
+
+</html>
